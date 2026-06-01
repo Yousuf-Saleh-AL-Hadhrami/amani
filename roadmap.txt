@@ -1,0 +1,23 @@
+
+
+- programming bascis  any programming language [C , C++ , Java , js , php , python , etc]
+- decided to be a web developer 
+- [ 
+   - How web works 
+   - what is internet 
+   - what is network protocols
+   - how data is transfered in network 
+   - what is web browser
+   - what is web server 
+   - what is http/https protocols 
+   - frontend development basics  => html , css , javascript
+   - front end development libraries and frameworks => jquery , reactsjs , vuejs , angular , boostratap, tailwindcss etc
+
+   - server as a computer with a high performance
+   - web server application [ apache web server , Ngnix , Microsof IIS ] + port listening
+   
+   - file storage + database to store data permenantly
+
+   - database server [ mysql , sqlserver , posgress sql , oracle , sqlite , Mongodb , etc]
+
+ ]
