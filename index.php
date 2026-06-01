@@ -40,6 +40,7 @@ setcookie("test_cookie","This_is_test_cookie", time() + 10, "/", "127.0.0.1", tr
         //     }
     ?>
 // This is how to link external js file
+// this kine is added in local repo
     <script src="js/main.js"></script>
 </body>
 </html>
