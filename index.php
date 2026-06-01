@@ -39,7 +39,7 @@ setcookie("test_cookie","This_is_test_cookie", time() + 10, "/", "127.0.0.1", tr
         //         echo $header . "<br>";
         //     }
     ?>
-
+// This is how to link external js file
     <script src="js/main.js"></script>
 </body>
 </html>
