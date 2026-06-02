@@ -7,6 +7,9 @@ $_SESSION['name'] = "Yousuf AL Hadhrami";
 $_SESSION['login'] = true;
 $_SESSION['salary'] = 300;
 
+// echo chr(42);
+echo ord('*');
+
 
 
 if(!isset($_COOKIE['test_cookie']))

@@ -21,3 +21,62 @@
    - database server [ mysql , sqlserver , posgress sql , oracle , sqlite , Mongodb , etc]
 
  ]
+
+URI & URL
+
+ http/https://www.example.com/products/10?search=pepsi&type=black#
+
+ schema     Domain        Path     Query String
+
+ =================================================================
+
+ Storage Units:
+
+ - Bit     =>   0 | 1  Off/On
+ - Byte    =>  00000000   =  8 bits
+===========================================================
+Our Example
+     
+      0     1    0    1    0     0    1     1   => One Byte Contains these 8 bits
+
+      ^7   ^6   ^5   ^4   ^3    ^2   ^1    ^0
+      2     2    2    2    2     2    2    2    =>  This is the Binary Rule
+
+
+      128   64   32   16   8     4    2     1
+
+
+      0   64 + 0  + 16  + 0  +  0  +  2  +  1  =  83
+
+
+      what is the Binary Code for character A or a?
+
+
+      128 + 64 + 32  + 16  + 8  +  4 +  2  +  1  =  255
+
+
+     ^15    ^14   ^13   ^12  ^11   ^10   ^9  ^8  ^7    ^6   ^5   ^4   ^3    ^2   ^1    ^0
+      2     2    2    2    2     2    2    2      2     2    2    2    2     2     2     2 
+
+      128 + 64 + 32  + 16  + 8  +  4 +  2  +  1  =  310
+
+     
+         65536 + 32768  + 16384  +  8192   +  4096  +   2048    +  1024  +    512  +  256  
+
+
+
+
+===========================================================
+
+
+ - KiloByte
+ - MegaByte 
+ - GigaByte 
+ - TeraByte
+
+ Computer Numbers:
+
+ - Binary    => [ 0 , 1 ]
+ - Octal     => [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 ]
+ - Hexadecimal  [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , A , B , C , D , E , F ]
+ - Decimal      [ 1 , 9 ]
