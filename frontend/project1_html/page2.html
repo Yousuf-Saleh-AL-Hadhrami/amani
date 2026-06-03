@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+     <!-- External Style -->
+     <link rel="stylesheet" href="./css/style.css">
+    <title>Page2</title>
+    <!-- Internal Style -->
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        .parent{
+            width: 600px;
+            min-height: 500px;
+            border: 1px solid black;
+            margin: 40px auto;
+            display: grid;
+            flex-direction: row;
+            /* flex-wrap: wrap; */
+            justify-content: flex-start;
+            align-items:stretch;
+
+            /*flex-flow: row nowrap; shorthand*/
+        }
+
+        .parent div{
+
+            width: 200px;
+            height: 160px;
+            background-color: red;
+            text-align: center;
+            color:white;
+            border-left: 1px dotted white;
+
+        }
+/* 
+        .parent div:last-child{
+            flex-grow: 2;  /* Default calue is 0 
+        } 
+*/
+        .parent div:first-child{
+            flex-shrink: 2;  /* Default value is 1 */
+        }
+
+
+        @media(max-width: 500px){
+
+            .parent{
+                flex-direction: column;
+                /* justify-content: center; */
+                align-items: center;
+            }
+
+            .parent > div:nth-child(3){
+                background-color: yellow ;
+                color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bolder;
+                font-size: 24px;
+            }
+        }
+
+        h1{
+            color: green !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Inline Style -->
+    <h1 style="color:blue !important">Welcome to page Two</h1>
+
+    <div class="parent">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <!-- <div>Five</div> -->
+        <!-- <div>Six</div> -->
+            
+    </div>
+    
+</body>
+</html>
