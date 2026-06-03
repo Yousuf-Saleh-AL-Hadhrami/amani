@@ -1,4 +1,12 @@
 
+:root{
+    --my-color: #a8c995;
+    --my-color2: #ddccff;
+    --my-color3: #ddccff;
+    --my-color4: #ddccff;
+    --my-color5: #ddccff;
+
+}
 
 .btn-primary{
 
@@ -8,4 +16,9 @@
 
 h1{
     color:orange !important;
+}
+
+.test{
+
+    background-color: var(--my-color);
 }
