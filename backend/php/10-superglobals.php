@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 ?>
 
 <img src="<?= $browser.'1781461419.jfif' ?>">
-<?= $_ENV['APP_NAME'] ?>
+<?=  getenv('.env.APP_NAME') ?>
 <form action="?admin=admin" method="post" enctype="multipart/form-data">
 <input type="text" name="id">
 <input type="text" name="uname">
