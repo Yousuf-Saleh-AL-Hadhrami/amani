@@ -18,8 +18,8 @@ curl_setopt_array($curl, [
     'products' => [
         [
             'name' => 'product 1',
-            'quantity' => 3,
-            'unit_amount' => 3 // المبلغ بالبيسة (100 بيسة = 0.1 ريال عماني)
+            'quantity' => 1,
+            'unit_amount' => 1 * 1000  // المبلغ بالبيسة (100 بيسة = 0.1 ريال عماني)
         ]
     ],
     'success_url' => 'https://thw.om',
