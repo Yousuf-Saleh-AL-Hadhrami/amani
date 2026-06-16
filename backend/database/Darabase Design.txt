@@ -1,0 +1,96 @@
+DATABASE DESIGN CHEAT SHEET
+============================
+
+
+1 - ERD (Entity Relationship Diagram)
+-------------------------------------
+
+Entities:
+- Strong Entity
+- Weak Entity
+
+Attributes:
+- Simple Attribute
+- Composite Attribute
+    -> name = first_name + last_name
+- Multi-valued Attribute
+    -> phone_numbers
+- Derived Attribute
+    -> age (derived from birth_date) ❌ NOT stored
+
+
+Relationships:
+----------------
+
+Degree:
+- Unary      -> 1 entity (self relationship)
+- Binary     -> 2 entities
+- Ternary    -> 3 entities
+
+Cardinality:
+- One-to-One   (1:1)
+- One-to-Many  (1:M)
+- Many-to-Many (M:N)
+
+
+
+2 - ERD → Relational Schema
+----------------------------
+
+Rules:
+
+- Multi-valued attribute:
+    -> create separate table
+
+- Composite attribute:
+    -> split into multiple columns
+
+- Derived attribute:
+    -> NOT stored in DB
+
+Relationships:
+
+- 1:1
+    -> FK in one table
+    -> OR FK + UNIQUE
+    -> OR PK = FK
+
+- 1:M
+    -> FK goes to "Many" side
+
+- M:N
+    -> create junction (associative) table
+
+- Weak Entity:
+    -> FK to parent
+    -> PK = (parent_id + partial key)
+    OR
+    -> surrogate id + FK (practical approach)
+
+
+
+3 - NORMALIZATION
+------------------
+
+1NF (First Normal Form):
+- No repeating groups
+- No multi-valued fields
+
+Example:
+❌ phone = "9123, 9345"
+✔ separate rows in another table
+
+
+2NF (Second Normal Form):
+- No partial dependency on composite key
+
+Example:
+❌ (student_id, course_id) → student_name
+
+
+3NF (Third Normal Form):
+- No transitive dependency
+
+Example:
+❌ VILLAGE(id, state_id, governorate_id)
+✔ VILLAGE → STATE → GOVERNORATE
