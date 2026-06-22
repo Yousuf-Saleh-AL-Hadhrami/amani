@@ -1,6 +1,17 @@
 
 
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+ALTER TABLE users ADD COLUMN role ENUM('admin','user') DEFAULT 'user';
 
  CREATE TABLE departments(
     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -32,3 +43,19 @@
      category_name VARCHAR(255),
      description TEXT
      );
+
+
+     CREATE TABLE products(
+     id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+     product_name VARCHAR(255),
+     description TEXT,
+     price DECIMAL(5.2),
+     category_id INT UNSIGNED,
+     FOREIGN KEY(category_id) references categories(id) ON UPDATE CASCADE ON DELETE CASCADE
+     );
+
+
+     ALTER TABLE products ADD COLUMN image VARCHAR(100);
+
+
+

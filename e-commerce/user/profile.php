@@ -3,12 +3,15 @@
 session_start();
 $title = 'Dashboard';
 include "./authenticate.php";
-include "./isAdmin.php";
+include "./isUser.php";
 include "./../includes/header.php";
-include "./../includes/adminNavbar.php";
+include "./../includes/userNavbar.php";
+
+
 
 ?>
 
+<h1>Welcome <?= $_SESSION['name'] ?></h1>
 
 
 

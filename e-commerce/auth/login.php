@@ -14,15 +14,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
         $result = mysqli_query($connection,$query) or die("Error in Query " . mysqli_error($connection));
         $user = mysqli_fetch_assoc($result);
 
-        if($user &&  password_verify($password , $user['password'] ))
+        if($user &&  password_verify($password , $user['password']))
             {
                 $_SESSION['name'] = $user['fname'] . ' '. $user['lname'];
                 $_SESSION['id'] = $user['id'];
+                $_SESSION['role'] = $user['role'];
                 $_SESSION['login'] = true;
 
-                 header("location: ./../admin/dashboard.php");
-                 exit;
             }
+
+            if($user['role'] == 'admin')
+                {
+                    header("location: ./../admin/dashboard.php");
+                    exit;
+                } else {
+
+                header("location: ./../user/profile.php");
+                    exit;
+
+                }
 
 
     }
@@ -33,10 +43,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 
 <?php 
 if(isset($_SESSION['login'])): 
+
     header("location: ./../admin/dashboard.php");
     exit;
-
 endif;
+
 ?>
 
     <div class="container">

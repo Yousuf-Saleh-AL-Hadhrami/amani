@@ -2,10 +2,11 @@
 <?php 
 session_start();
 $title = 'Categories';
-include "./authenticate.php";
-include "./../includes/header.php";
-include "./../includes/navbar.php";
-include "./../config/dbconnect.php";
+include "./../authenticate.php";
+include "./../isAdmin.php";
+include "./../../includes/header.php";
+include "./../../includes/adminNavbar.php";
+include "./../../config/dbconnect.php";
 
 
 $query = " SELECT * FROM categories";
@@ -66,4 +67,4 @@ endwhile;
 
 <?php 
 
-include "./../includes/footer.php";
+include "./../../includes/footer.php";
