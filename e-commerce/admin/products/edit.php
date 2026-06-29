@@ -1,7 +1,7 @@
 
 <?php 
 session_start();
-$title = 'Create Product';
+$title = 'Edit Product';
 include "./../authenticate.php";
 include "./../isAdmin.php";
 include "./../../includes/header.php";
@@ -13,9 +13,16 @@ include "./../../includes/functions.php";
 
 $path = '../'.PATH;
 
+$id = $_GET['id'];
+
+$query = " SELECT * FROM products WHERE id = $id ";
+$result = mysqli_query($connection , $query);
+$product = mysqli_fetch_assoc($result);
+
 
 $query = " SELECT * FROM categories";
-$result = mysqli_query($connection , $query);
+$result2 = mysqli_query($connection , $query);
+
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -35,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if($insert)
             {
-                $_SESSION['success'] = 'The Product is Created Successfully!';
+                $_SESSION['success'] = 'The Product is Editd Successfully!';
                 header("location: index.php");
                 exit;
             }
@@ -50,14 +57,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <div class="container">
 
 
-<h2 class="text-center mt-3">Create Products</h2>
+<h2 class="text-center mt-3">Edit Product [ <?=  isset($_GET['id']) ?? 0 ?>] </h2>
 
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white py-3">
-                    <h5 class="card-title mb-0">إضافة منتج جديد</h5>
+                    <h5 class="card-title mb-0">تعديلمنتج جديد</h5>
                 </div>
                 <div class="card-body p-4">
                     <form action="#" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
@@ -65,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                         <!-- product_name -->
                         <div class="mb-3">
                             <label for="product_name" class="form-label fw-bold">اسم المنتج</label>
-                            <input type="text" class="form-control" id="product_name" name="product_name" maxlength="255" required placeholder="أدخل اسم المنتج">
+                            <input type="text" class="form-control" id="product_name" name="product_name" maxlength="255" value="<?= $product['product_name'] ?> ">
                             <div class="invalid-feedback">يرجى إدخال اسم المنتج.</div>
                         </div>
 
@@ -77,9 +84,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                                 <!-- يتم جلب هذه الخيارات ديناميكياً من جدول categories -->
                                 
                                 <?php 
-                               while($category = mysqli_fetch_assoc($result)):
+                               while($categories = mysqli_fetch_assoc($result2)):
                                     
-                                echo "<option value='$category[id]'>$category[category_name]</option>";
+                                echo "<option value='$categories[id]'";
+                                
+                                if($categories['id'] == $product['category_id']) 
+                                    {
+                                        echo " selected";
+                                    }
+                                echo " >$categories[category_name]</option>";
                                     
                                endwhile;
                                ?>
@@ -103,6 +116,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                             <textarea class="form-control" id="description" name="description" rows="4" placeholder="اكتب وصفاً تفصيلياً للمنتج..."></textarea>
                         </div>
 
+                        <?php 
+
+          if(file_exists($product['image'])):
+
+           echo "<img src='$product[image]' />";
+
+          endif;
+          
+?>
                         
                         <!-- image -->
                         <div class="mb-3">

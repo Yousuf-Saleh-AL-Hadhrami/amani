@@ -12,6 +12,8 @@ include "./../../config/dbconnect.php";
 $query = " SELECT categories.category_name , categories.description as category_description , products.* FROM products INNER JOIN categories ON products.category_id = categories.id";
 $result = mysqli_query($connection , $query);
 
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32))
+
 ?>
 
 <div class="container">
@@ -56,9 +58,11 @@ while($products = mysqli_fetch_assoc($result)):
 
 
     <td>
-        <a class="btn btn-primary btn-sm">Edit</a>
+        <a  href="edit.php?id=<?=  $products['id']?> " class="btn btn-primary btn-sm">Edit</a>
 
-        <form action="" method="post" class="d-inline-block">
+        <form action="delete.php" method="post" class="d-inline-block">
+             <input type="hidden" name="_token" value="<?= $_SESSION['csrf_token'] ?>">
+             <input type="hidden" name="product_id" value="<?= $products['id'] ?>">
             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
         </form>
     </td>
