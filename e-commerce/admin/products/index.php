@@ -9,7 +9,24 @@ include "./../../includes/adminNavbar.php";
 include "./../../config/dbconnect.php";
 
 
-$query = " SELECT categories.category_name , categories.description as category_description , products.* FROM products INNER JOIN categories ON products.category_id = categories.id";
+
+$query = " SELECT categories.category_name , categories.description
+           AS category_description , products.* FROM products
+           INNER JOIN categories ON products.category_id = categories.id WHERE 1";
+
+if(isset($_GET['search']))
+{
+    $query .= " AND product_name LIKE '%". $_GET['search'] ."%'
+                OR price= '$_GET[search]'";
+}
+
+
+// echo $query;
+
+// exit;
+
+
+
 $result = mysqli_query($connection , $query);
 
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32))
@@ -21,7 +38,19 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32))
 
 <h2 class="text-center mt-3">Products</h2>
 
-<a href="create.php" class="btn btn-info btn-sm">Add New</a>
+<div class="w-100 d-flex justify-content-between align-items-center gap-3">
+    <div>
+        <a href="create.php" class="btn btn-info btn-sm">Add New</a>
+    </div>
+
+    <div>
+        <form action="" class="d-flex gap-2">
+            <input type="search" name="search" id="search" class="form-control form-control-sm" placeholder="Search Name Or Price">
+            <button type="submit" class="btn btn-primary btn-sm" name="filter">Search</button>
+        </form>
+    </div>
+</div>
+
 <?php 
 if(isset($_SESSION['success'])):
 echo "<p class='alert alert-success'> $_SESSION[success] </p>";

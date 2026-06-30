@@ -34,8 +34,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         $full_path = uploadImage($_FILES['image'] , $path);
 
-        // INSERT TO DATABASE 
+        
 
+        // INSERT TO DATABASE 
         $insert = mysqli_query($connection , 
              " INSERT INTO products VALUES(NOT NULL ,'$product_name','$description',$price, $category_id,'$full_path');"
         );
