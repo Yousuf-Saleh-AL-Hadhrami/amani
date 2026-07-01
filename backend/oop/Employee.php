@@ -4,19 +4,25 @@ declare(strict_types=1);
 
 // require "./Person.php";
 
-class Employee extends Person 
+class Employee extends Person implements Rule , Certificate
 {
-    public int $empId;
+     use Notification;
+    public ?int $empId = null;
     public string $job;
 
     public float $bsalary = 0;
 
-    public float $bounus;
+    public float $bounus =0;
 
     public float $totalSalary = 0;
 
+    private float $ejadaReward;
 
-  public function __construct(int $id, string $fn, string $ln, string $add, int $empId, string $job)
+    protected string $certificate;
+
+
+
+  public function __construct(int $id, string $fn, string $ln, string $add, ?int $empId = null, string $job = '')
 {
     parent::__construct($id, $fn, $ln, $add);
 
@@ -49,7 +55,8 @@ public function showDetails()
     return
       parent::showDetails() . " ".
            $this->getEmpId() . " ".
-           $this->getEmpJob();
+           $this->getEmpJob(). " ". 
+           $this->emailNotification("السلام عليكم هذا إميل من الشركة");
 
 }
 
@@ -63,7 +70,7 @@ public function setBasicSalary(float $bsalary)
 
 public function setBonus(float $bons)
 {
-    $this->bounus = $bons;
+    $this->bounus += $bons;
 
     return $this;
 }
@@ -90,6 +97,65 @@ public function getTotalSalary()
     return $this->totalSalary;
 }
 
+
+public function getEjadaReward(array $credentials): bool|float
+{
+    $storedCredentials = ["username" => "test", "password" => "test"];
+
+    // التأكد من وجود المفاتيح المطلوبة أولاً لتجنب الأخطاء
+    if (!isset($credentials['username']) || !isset($credentials['password'])) {
+        return false;
+    }
+
+    // التحقق من تطابق المدخلات مع البيانات المخزنة
+    if($credentials['username'] === $storedCredentials['username'] 
+        && $credentials['password'] === $storedCredentials['password'])
+        {
+            $this->ejadaReward = 500;
+
+            return $this->ejadaReward;
+        }
+}
+
+
+
+public static function who()
+{
+    return  __CLASS__;
+}
+
+
+public function test()
+{
+     return static::who();
+}
+
+
+
+	public function attendence()
+    {
+       return 'Attendant';
+    }
+
+  
+    public function leave()
+    {
+        return 'Leave';
+    }
+
+
+
+    public function itPolicy()
+    {
+        return 'Followed your It Policy';
+    }
+
+
+    #[Override]
+    public function approveCertificate()
+    {
+       $this->certificate = 'Bachelors';
+    }
 
 
 

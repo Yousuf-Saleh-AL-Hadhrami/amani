@@ -8,3 +8,16 @@
 - constructor 
 - Access Modifiers [ public , protected , private ]
 - Inheritance and Method Overriding 
+- Late Static Bindings
+- final class and final methods
+- Encapsulation
+- Abstract Class
+- Interface
+- Polymorphisim => تعدد الأشكال
+- traits
+
+- namespaces 
+- autoloading 
+- composer 
+- packigist
+- Introduction to Framework ( Laravel , symfony , CodeIginter , etc)
