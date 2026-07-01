@@ -1,0 +1,10 @@
+
+
+- Class vs Object 
+- $this vs self 
+- properties & methods 
+- non-static properties and methods & static properties & methods 
+- new key word 
+- constructor 
+- Access Modifiers [ public , protected , private ]
+- Inheritance and Method Overriding 

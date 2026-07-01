@@ -1,16 +1,17 @@
 <?php
+declare(strict_types=1);
 
 class Person 
 {
 
 // Non-Static Properties belongs to the Object
-    public $id;
-    public $fname;
-    public $lname;
-    public $address;
+    public int $id;
+    public string $fname;
+    public string $lname;
+    public ?string $address = null;  // Nullable Typed Property
 
     // Static Propert belongs to To the class itself
-    public static $counter = 0;
+    public static int $counter = 0;
 
     // Constant Belongs to The class
     public const AGE = 18;
@@ -32,16 +33,18 @@ class Person
     // Static Method belongs to The Class
     public static function getCounter():int
     {
-         return self::$counter;
+        return self::$counter;
+
     }
 
     // Non-Static Methods Blongs to the object
-    public function setId(int $id):Person
+    public function setId(int $id)
     {
         $this->id = $id;
 
         return $this;
     }
+
 
     public function getId():int 
     {
@@ -80,19 +83,19 @@ class Person
     }
 
 
-    public function setAddress(string $add)
+    public function setAddress(string|null $add)
     {
         $this->address = $add;
         return $this;
     }
 
 
-     public function getAddress():string 
+     public function getAddress():string|null
     {
         return $this->address;
     }
 
-    public function showPersonDetails()
+    public function showDetails()
     {
         return
                $this->getId() . ' ' . 
@@ -100,8 +103,12 @@ class Person
                $this->getLname() . ' ' . 
                $this->getAddress() . ' ' ; 
 
-
     }
+
+    // public function show()
+    // {
+    //     return $this->showDetails();
+    // }
 
 
     public function __destruct()
