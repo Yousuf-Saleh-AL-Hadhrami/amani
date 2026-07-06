@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
+namespace Person;
+
+use Moe\Oop\Person\Person;
+use Notification;
+
 // require "./Person.php";
 
-class Employee extends Person implements Rule , Certificate
+class Employee extends Person implements \Rule , \Certificate
 {
      use Notification;
     public ?int $empId = null;
@@ -118,20 +123,6 @@ public function getEjadaReward(array $credentials): bool|float
 }
 
 
-
-public static function who()
-{
-    return  __CLASS__;
-}
-
-
-public function test()
-{
-     return static::who();
-}
-
-
-
 	public function attendence()
     {
        return 'Attendant';
@@ -157,6 +148,11 @@ public function test()
        $this->certificate = 'Bachelors';
     }
 
+
+    public static function who()
+    {
+        return __CLASS__;
+    }
 
 
 

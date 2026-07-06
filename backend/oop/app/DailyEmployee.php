@@ -1,5 +1,7 @@
 <?php 
 
+namespace Person;
+
 class DailyEmployee extends Employee
 {
    public int $days;
